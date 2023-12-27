@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Diversos</title>
+    <style>
+        body    {
+            background-color: rgb(60, 60, 60);
+            color: white;
+            font: normal 20pt Arial;
+        }
+
+        p   {
+            color: rgb(94, 186, 240);
+        }
+    </style>
+</head>
+<body>
+    <h1>Iniciando estudos DOM</h1>
+    <p>Aprendendo a usar o <strong>DOM</strong> no JavaScript.</p>
+    <div>
+        <p><input id="button1" type="button" value="Click hehe" onclick="bora()"></p>
+    </div>
+
+    <div id="res"></div>
+
+    <script>
+         function bora() {
+            const n1 = Number.parseInt(window.prompt("Digite um número:")); // Number.parseInt(n) é apenas para números Inteiros.
+            const n2 = Number.parseFloat(window.prompt("Digite outro número:")); // Number.parseFloat(n) é apenas para números Flutuantes (com vírgulas/decimais).
+            // Mas para facilitar, basta colocar somente Number(n) e o sistema já identifica qual é.
+
+            while (true) {
+                if (!isNaN(n1) && !isNaN(n2) && n1 !== null && n2 !== null) {
+                    let soma = n1 + n2;
+                    // Lembrando que: (number + number) é adição. // (string + string) é concatenação.
+                    // Perceba que não iria dar certo se eu colocasse "A soma dos números é soma.".
+                    
+                    let divRes = document.getElementById("res");
+                    divRes.innerHTML = "A soma dos números é " + soma + ".";
+
+                    let divNome = document.createElement("div");
+                    divNome.innerHTML = "Agora, para saber mais sobre o seu nome <button onclick='exibirNomeInfo()'>Clique Aqui!</button>.";
+                    divRes.appendChild(divNome);
+                    break;
+                } else {
+                    window.alert("ERRO! Insira o número nos dois campos para calcular.");
+                    n1 = Number.parseInt(window.prompt("Digite um número:"));
+                    n2 = Number.parseFloat(window.prompt("Digite outro número:"));
+                }
+            }
+        }
+            function exibirNomeInfo() {
+                var nome = window.prompt("Qual é seu nome?");
+
+                document.write(`Olá, <strong>${nome}</strong>! Seu nome tem ${nome.length} letras.<br/>`) // .length para contar os caracteres.
+                document.write(`Seu nome em maiúsculo é ${nome.toUpperCase()}.<br/>`);    // .toUpperCase() para deixar tudo em MAIÚSCULO.
+                document.write(`E em minúsculo é ${nome.toLowerCase()}.`) // .toLowerCase() para deixar tudo em minúsculo.
+                // <strong> <strong/> serve para deixar em negrito.
+                    
+                // manipulando o CSS do HTML no JavaScript:
+                let estilo = window.document.body.style;
+                    estilo.backgroundColor = "black";
+                    estilo.color = "rgba(280, 241, 241, 0.822)";
+                    estilo.font = "normal 18pt Arial";
+            }
+    </script>
+</body>
+</html>
